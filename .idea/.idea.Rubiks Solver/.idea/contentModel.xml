@@ -6,8 +6,11 @@
     <e p="S:\Unity\Projects\Rubiks Solver" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Automate.cs" t="Include" />
         <e p="CamPicker.cs" t="Include" />
         <e p="ColorDetector.cs" t="Include" />
+        <e p="CubeMap.cs" t="Include" />
+        <e p="CubeState.cs" t="Include" />
         <e p="KC2" t="Include">
           <e p="K_CoordCube.cs" t="Include" />
           <e p="K_CoordCubeBuildTables.cs" t="Include" />
@@ -28,6 +31,14 @@
           <e p="Search.cs" t="Include" />
           <e p="Tools.cs" t="Include" />
         </e>
+        <e p="PivotRotation.cs" t="Include" />
+        <e p="ReadCube.cs" t="Include" />
+        <e p="RotateBigCube.cs" t="Include" />
+        <e p="SelectFace.cs" t="Include" />
+        <e p="SetCubeColors.cs" t="Include" />
+        <e p="Solver.cs" t="Include" />
+        <e p="SolveTwoPhase.cs" t="Include" />
+        <e p="WarningPanel.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

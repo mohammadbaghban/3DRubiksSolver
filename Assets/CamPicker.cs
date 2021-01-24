@@ -135,10 +135,11 @@ public RawImage image;
                  
              }
          }
-         ColorDetector.AddFaceColor(colors, smallPhotoSize);
+
+         ColorDetector.AddFaceColor(colors);
          
      }
- 
+     
      // Switch between the device's front and back camera
      public void SwitchCamera()
      {

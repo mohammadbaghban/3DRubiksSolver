@@ -1,46 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4857191c-920d-44d9-b5e4-e7a477404ee6" name="Default Changelist" comment="" />
+    <list default="true" id="4857191c-920d-44d9-b5e4-e7a477404ee6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rubiks Solver/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rubiks Solver/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rubiks Solver/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rubiks Solver/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Rubiks Solver/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Rubiks Solver/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CamPicker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CamPicker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ColorDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ColorDetector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/s1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/s1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/photo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/photo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/XRSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/XRSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://H:/C#/Projects/RK1/RK1/K_CubieCube.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://H:/C#/Projects/Megalomatt Kociemba/Kociemba/K_FaceCube.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/RotateBigCube.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://H:/C#/Projects/TFS2/TFS2/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://H:/C#/Projects/Megalomatt Kociemba/Kociemba/K_SearchRunTime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CubeState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Solver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ColorDetector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KC2/K_Search.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D1422B3F-C937-4601-8C92-EDA852993B93/b8/6452c1bb/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KC2/K_Tools.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://H:/C#/Projects/RK1/RK1/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/c8/b08e6d65/WebCamTexture.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://H:/C#/Projects/Megalomatt Kociemba/Kociemba/Main.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SolveTwoPhase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SetCubeColors.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D1422B3F-C937-4601-8C92-EDA852993B93/af/b56167df/Color.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CamPicker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://H:/C#/Projects/RK2/TwoPhaseSolver/SolverTest/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ColorDetector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Constants.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Kociemba/BinLoad.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/KC2/K_Search.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Cube.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Coords.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/KC2/K_Tools.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Move.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://H:/C#/Projects/RK1/RK1/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Search.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Tools.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/c8/b08e6d65/WebCamTexture.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://H:/C#/Projects/Megalomatt Kociemba/Kociemba/Main.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Automate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ReadCube.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://H:/C#/Projects/TwoPhaseSolver/TwoPhaseSolver/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/CamPicker.cs" />
         <option value="H:/C#/Projects/RK1/RK1/Program.cs" />
         <option value="$PROJECT_DIR$/Assets/KC2/K_Tools.cs" />
+        <option value="$PROJECT_DIR$/Assets/SolveTwoPhase.cs" />
+        <option value="$PROJECT_DIR$/Assets/SetCubeColors.cs" />
+        <option value="$PROJECT_DIR$/Assets/ReadCube.cs" />
         <option value="$PROJECT_DIR$/Assets/ColorDetector.cs" />
+        <option value="$PROJECT_DIR$/Assets/CamPicker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Solver.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1nTkxOQKUIREH6SnINlaIelgh4b" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -49,6 +88,7 @@
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TWShift.4" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
@@ -89,6 +129,7 @@
       <option name="presentableId" value="Default" />
       <updated>1611421715107</updated>
       <workItem from="1611421720978" duration="19059000" />
+      <workItem from="1611476937760" duration="10820000" />
     </task>
     <servers />
   </component>
@@ -102,9 +143,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="226" y="48" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1611426994934" />
-    <state x="450" y="144" width="636" height="536" key="find.popup" timestamp="1611438742158">
+    <state x="450" y="144" width="636" height="536" key="find.popup" timestamp="1611486422301">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="450" y="144" width="636" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1611438742158" />
+    <state x="450" y="144" width="636" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1611486422301" />
   </component>
 </project>

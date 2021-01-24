@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using Kociemba;
 using UnityEngine;
 
@@ -13,11 +14,8 @@ namespace DefaultNamespace
         static Color[][] centers = new Color[6][]; // F, R, B, L, U, D
         static Color[] centersAverage = new Color[6];
         private static string[] indexToFace = new[] {"F", "R", "B", "L", "U", "D"};
-        static double[][][] colorDifferences = new double[6][][]; // 6 * 9 * 6
         static Cell[] _cells = new Cell[54];
-        static Cell[][] twoDCells = new Cell[6][]; // 6 * 9
         private static ColorItem[] differences = new ColorItem[324]; //54 * 6 = 324
-        static string[][] cube = new string[6][];
         private static int[] assignedCellsToEachFace = new[] {0, 0, 0, 0, 0, 0};
 
         static void ColorDetection()
@@ -31,7 +29,7 @@ namespace DefaultNamespace
                 centersAverage[i] = AverageColor(centers[i]);
                 Debug.Log("CA:: " + centersAverage[i].r * 255 + " " +  centersAverage[i].g * 255 + " " + centersAverage[i].b * 255);
             }
-
+            
             string cube54 = "";
             for (int i = 0; i < 6; i++)
             {
@@ -60,18 +58,9 @@ namespace DefaultNamespace
                 }
             }
             ClassifyColors();
-
-            for (int i = 0; i < 54; i++)
-            {
-                cube54 += indexToFace[_cells[i].face];
-            }
-            Debug.Log(cube54);
-            
-            string info = "";
-            string solution = Search.solution(Cube54ToKociemba(cube54), out info);
-            Debug.Log(info);
-            Debug.Log(Cube54ToKociemba(cube54));
-            Debug.Log(solution);
+            // GameObject.Find("Solver").GetComponent<Solver>().SetFacelets();
+            GameObject.Find("SetCubeColors").GetComponent<SetCubeColors>().SetColors(centersAverage, Solver.Cube54ToKociemba(Solver.CellsToCube54(_cells)));
+            GameObject.Find("Solver").GetComponent<Solver>().Solve(_cells);
         }
 
         static double ColorDifference(int faceIndex, Color color)
@@ -80,6 +69,7 @@ namespace DefaultNamespace
                     Math.Pow(color.g - centersAverage[faceIndex].g, 2) +
                     Math.Pow(color.b - centersAverage[faceIndex].b, 2);
         }
+        
         static Color AverageColor(Color[] colors)
         {
             int numberOfValidPixels = 0;
@@ -88,11 +78,14 @@ namespace DefaultNamespace
             {
                 float h, s, v;
                 Color.RGBToHSV(colors[j], out h, out s, out v);
-                    
-                r += colors[j].r;
-                g += colors[j].g;
-                b += colors[j].b;
-                numberOfValidPixels++;
+
+                if (v > 30f / 255) // ignore dark pixels
+                {
+                    r += colors[j].r;
+                    g += colors[j].g;
+                    b += colors[j].b;
+                    numberOfValidPixels++;
+                }
             }
             Debug.Log("AVG: " + 255 * r / numberOfValidPixels + " " + 255 * g / numberOfValidPixels + " " + 255 * b / numberOfValidPixels);
             return new Color(r / numberOfValidPixels, g / numberOfValidPixels, b / numberOfValidPixels);
@@ -139,101 +132,40 @@ namespace DefaultNamespace
             }
         }
 
-        public static void AddFaceColor(Color[][] colors, int numberOfPixels, int index)
+        public static void AddFaceColor(Color[][] colors, int index)
         {
             _colors[index] = colors;
-
-            // for (int i = 0; i < 9; i++)
-            // {
-            //     Texture2D photo1 = new Texture2D(numberOfPixels, numberOfPixels);
-            //     photo1.SetPixels(colors[i]);
-            //     photo1.Apply();
-            //     byte[] bytes1 = photo1.EncodeToPNG();
-            //     //Write out the PNG. Of course you have to substitute your_path for something sensible
-            //     File.WriteAllBytes(Application.dataPath + "/photo" + index + "" + i + ".png", bytes1);
-            // }
         }
 
-        public static void AddFaceColor(Color[][] colors, int numberOfPixels)
+        public static void AddFaceColor(Color[][] colors)
         {
-            AddFaceColor(colors, numberOfPixels, _faceIndex);
+            AddFaceColor(colors, _faceIndex);
             _faceIndex++;
             if (_faceIndex == 6)
             {
-                _faceIndex = 0;
                 ColorDetection();
+                _faceIndex = 0;
+                assignedCellsToEachFace = new[] {0, 0, 0, 0, 0, 0};
+                // ThreadStart thread = delegate
+                // {
+                //     
+                // };
+                // thread.Invoke();
             }
         }
 
-        public static string Cube54ToKociemba(string cube54)
+        public static Color[] GetCenterColors()
         {
-            string faceletCube = "";
-            
-            faceletCube += cube54[36]; //U
-            faceletCube += cube54[39];
-            faceletCube += cube54[42];
-            faceletCube += cube54[37];
-            faceletCube += cube54[40];
-            faceletCube += cube54[43];
-            faceletCube += cube54[38];
-            faceletCube += cube54[41];
-            faceletCube += cube54[44];
-            
-            faceletCube += cube54[15]; //R
-            faceletCube += cube54[16];
-            faceletCube += cube54[17];
-            faceletCube += cube54[12];
-            faceletCube += cube54[13];
-            faceletCube += cube54[14];
-            faceletCube += cube54[9];
-            faceletCube += cube54[10];
-            faceletCube += cube54[11];
-            
-            faceletCube += cube54[6]; //F
-            faceletCube += cube54[7];
-            faceletCube += cube54[8];
-            faceletCube += cube54[3];
-            faceletCube += cube54[4];
-            faceletCube += cube54[5];
-            faceletCube += cube54[0];
-            faceletCube += cube54[1];
-            faceletCube += cube54[2];
-            
-            faceletCube += cube54[53]; //D
-            faceletCube += cube54[50];
-            faceletCube += cube54[47];
-            faceletCube += cube54[52];
-            faceletCube += cube54[49];
-            faceletCube += cube54[46];
-            faceletCube += cube54[51];
-            faceletCube += cube54[48];
-            faceletCube += cube54[45];
-            
-            faceletCube += cube54[33]; //L
-            faceletCube += cube54[34];
-            faceletCube += cube54[35];
-            faceletCube += cube54[30];
-            faceletCube += cube54[31];
-            faceletCube += cube54[32];
-            faceletCube += cube54[27];
-            faceletCube += cube54[28];
-            faceletCube += cube54[29];
-            
-            faceletCube += cube54[24]; //B
-            faceletCube += cube54[25];
-            faceletCube += cube54[26];
-            faceletCube += cube54[21];
-            faceletCube += cube54[22];
-            faceletCube += cube54[23];
-            faceletCube += cube54[18];
-            faceletCube += cube54[19];
-            faceletCube += cube54[20];
+            return centersAverage;
+        }
 
-            return faceletCube;
+        public static Cell[] GetCells()
+        {
+            return _cells;
         }
     }
 
-    class Cell
+    public class Cell
     {
         public int faceIndex;
         public int cellIndex;
