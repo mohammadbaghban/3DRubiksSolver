@@ -59,8 +59,11 @@ namespace DefaultNamespace
             }
             ClassifyColors();
             // GameObject.Find("Solver").GetComponent<Solver>().SetFacelets();
+            Debug.Log("Before SetColors");
             GameObject.Find("SetCubeColors").GetComponent<SetCubeColors>().SetColors(centersAverage, Solver.Cube54ToKociemba(Solver.CellsToCube54(_cells)));
+            Debug.Log("After SetColors");
             GameObject.Find("Solver").GetComponent<Solver>().Solve(_cells);
+            Debug.Log("After Solve");
         }
 
         static double ColorDifference(int faceIndex, Color color)

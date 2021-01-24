@@ -52,7 +52,7 @@ public RawImage image;
  
          // Get the device's cameras and create WebCamTextures with them
          frontCameraDevice = WebCamTexture.devices.Last();
-         backCameraDevice = WebCamTexture.devices[1];
+         backCameraDevice = WebCamTexture.devices[0];
  
          frontCameraTexture = new WebCamTexture(frontCameraDevice.name);
          backCameraTexture = new WebCamTexture(backCameraDevice.name);
@@ -107,8 +107,8 @@ public RawImage image;
          Debug.Log("Image size: " + squareImageSize);
          
          //Encode to a PNG
-         byte[] bytes = photo.EncodeToPNG();
-         File.WriteAllBytes(Application.dataPath + "/photo.png", bytes);
+         //byte[] bytes = photo.EncodeToPNG();
+         //File.WriteAllBytes(Application.dataPath + "/photo.png", bytes);
          Debug.Log("Saved photo: " + Application.dataPath);
 
          gridToPhotoScale = (squareImageSize / (float) gridImageSize);

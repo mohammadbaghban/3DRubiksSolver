@@ -11,11 +11,17 @@ public class Solver : MonoBehaviour
     public string facelets = "";
     private string solution = "";
     public GameObject solveBtn;
+    public GameObject CamSet;
 
     // Start is called before the first frame update
     void Start()
     {
        // Automate.moveList = StringToList("R U L' D B2");
+       if (Application.platform == RuntimePlatform.Android)
+       {
+           Tools.pathToTablesPrefix = "jar:file://";
+           Tools.pathToTables = "/Tables/";
+       }
 
     }
 
@@ -35,7 +41,7 @@ public class Solver : MonoBehaviour
         Debug.Log(info);
         Debug.Log(Cube54ToKociemba(cube54));
         Debug.Log(solution);
-        GameObject.Find("CamSet").SetActive(false);
+        CamSet.SetActive(false);
         solveBtn.SetActive(true);
     }
 

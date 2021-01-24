@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.Networking;
 using Random = System.Random;
 
 namespace Kociemba
@@ -29,6 +30,10 @@ namespace Kociemba
         ///         -4: Not all 8 corners exist exactly once<br>
         ///         -5: Twist error: One corner has to be twisted<br>
         ///         -6: Parity error: Two corners or two edges have to be exchanged </returns>
+        ///
+        public static string pathToTablesPrefix = "";
+        public static string pathToTables = @"/StreamingAssets/Tables/";
+
         public static int verify(string s)
         {
             int[] count = new int[6];
@@ -82,17 +87,40 @@ namespace Kociemba
 
         public static void SerializeTable(string filename, short[,] array)
         {
-            EnsureFolder(Application.dataPath + "\\KC2\\Tables\\");
+            //EnsureFolder(Application.streamingAssetsPath + pathToTables);
             BinaryFormatter bf = new BinaryFormatter();
-            Stream s = File.Open("\\KC2Tables\\" + filename, FileMode.Create);
+            WWW www = new WWW(Application.streamingAssetsPath + pathToTables + filename);
+            while (!www.isDone)
+            {
+                Debug.Log("s0");
+            }
+
+            byte[] bytes = www.bytes;
+            MemoryStream s = new MemoryStream(bytes);
+            // Stream s = File.Open(Application.streamingAssetsPath + pathToTables + filename, FileMode.Create);
             bf.Serialize(s, array);
             s.Close();
         }
 
         public static short[,] DeserializeTable(string filename)
         {
-            EnsureFolder(Application.dataPath + "\\KC2\\Tables\\");
-            Stream s = File.Open(Application.dataPath + "\\KC2\\Tables\\" + filename, FileMode.Open);
+            string str = "";
+            byte[] bytes;
+            
+            Debug.Log(Application.streamingAssetsPath + pathToTables + filename);
+            //EnsureFolder(pathToTablesPrefix + Application.dataPath + pathToTables);
+            // if (Application.platform == RuntimePlatform.Android)
+            // {
+                WWW www = new WWW(Application.streamingAssetsPath + pathToTables + filename);
+                while (!www.isDone)
+                {
+                    Debug.Log("s1");
+                }
+
+                bytes = www.bytes;
+            // }
+            // Stream s = File.Open(pathToTablesPrefix + Application.dataPath + pathToTables + filename, FileMode.Open);
+            MemoryStream s = new MemoryStream(bytes);
             BinaryFormatter bf = new BinaryFormatter();
             short[,] array = (short[,])bf.Deserialize(s);
             s.Close();
@@ -101,17 +129,33 @@ namespace Kociemba
 
         public static void SerializeSbyteArray(string filename, sbyte[] array)
         {
-            EnsureFolder(Application.dataPath + "\\KC2\\Tables\\");
+            //EnsureFolder(pathToTablesPrefix + Application.dataPath + pathToTables);
             BinaryFormatter bf = new BinaryFormatter();
-            Stream s = File.Open(Application.dataPath + "\\KC2\\Tables\\" + filename, FileMode.Create);
+            WWW www = new WWW(Application.streamingAssetsPath + pathToTables + filename);
+            while (!www.isDone)
+            {
+                Debug.Log("s2");
+
+            }
+            byte[] bytes = www.bytes;
+            MemoryStream s = new MemoryStream(bytes);
+
             bf.Serialize(s, array);
             s.Close();
         }
 
         public static sbyte[] DeserializeSbyteArray(string filename)
         {
-            EnsureFolder(Application.dataPath + "\\KC2\\Tables\\");
-            Stream s = File.Open(Application.dataPath + "\\KC2\\Tables\\" + filename, FileMode.Open);
+            //EnsureFolder(pathToTablesPrefix + Application.dataPath + pathToTables);
+            WWW www = new WWW(Application.streamingAssetsPath + pathToTables + filename);
+            while (!www.isDone)
+            {
+                Debug.Log("s3");
+
+            }
+            byte[] bytes = www.bytes;
+            MemoryStream s = new MemoryStream(bytes);
+
             BinaryFormatter bf = new BinaryFormatter();
             sbyte[] array = (sbyte[])bf.Deserialize(s);
             s.Close();
