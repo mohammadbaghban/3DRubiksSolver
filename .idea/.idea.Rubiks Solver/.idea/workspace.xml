@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4857191c-920d-44d9-b5e4-e7a477404ee6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://H:/C#/Projects/RK1/RK1/K_CubieCube.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://H:/C#/Projects/Megalomatt Kociemba/Kociemba/K_FaceCube.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://H:/C#/Projects/TFS2/TFS2/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://H:/C#/Projects/Megalomatt Kociemba/Kociemba/K_SearchRunTime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D1422B3F-C937-4601-8C92-EDA852993B93/af/b56167df/Color.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CamPicker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://H:/C#/Projects/RK2/TwoPhaseSolver/SolverTest/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ColorDetector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Constants.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Kociemba/BinLoad.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KC2/K_Search.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Cube.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Coords.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KC2/K_Tools.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Move.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://H:/C#/Projects/RK1/RK1/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Search.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Kociemba/Tools.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/c8/b08e6d65/WebCamTexture.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://H:/C#/Projects/Megalomatt Kociemba/Kociemba/Main.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://H:/C#/Projects/TwoPhaseSolver/TwoPhaseSolver/Program.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/CamPicker.cs" />
+        <option value="H:/C#/Projects/RK1/RK1/Program.cs" />
+        <option value="$PROJECT_DIR$/Assets/KC2/K_Tools.cs" />
+        <option value="$PROJECT_DIR$/Assets/ColorDetector.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1nTkxOQKUIREH6SnINlaIelgh4b" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4857191c-920d-44d9-b5e4-e7a477404ee6" name="Default Changelist" comment="" />
+      <created>1611421715107</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611421715107</updated>
+      <workItem from="1611421720978" duration="19059000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="WindowStateProjectService">
+    <state x="226" y="48" key="SettingsEditor" timestamp="1611426994934">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="226" y="48" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1611426994934" />
+    <state x="450" y="144" width="636" height="536" key="find.popup" timestamp="1611438742158">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="450" y="144" width="636" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1611438742158" />
+  </component>
+</project>
