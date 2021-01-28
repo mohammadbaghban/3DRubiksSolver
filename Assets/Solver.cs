@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using Kociemba;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Solver : MonoBehaviour
@@ -12,6 +13,7 @@ public class Solver : MonoBehaviour
     public string facelets = "";
     private string solution = "";
     public GameObject solveBtn;
+    public Text solveBtnText;
     public GameObject CamSet;
     public Text solutionText;
     public bool solve = true;
@@ -50,22 +52,27 @@ public class Solver : MonoBehaviour
         solutionText.gameObject.SetActive(true);
         cube.SetActive(true);
         solutionText.text = solution;
+
+        if (solution.Contains("Error"))
+        {
+            solve = false;
+            solveBtnText.text = "Reset";
+        }
     }
 
     public void SolveButtonClicked()
     {
+
         if (solve)
         {
             Automate.moveList = StringToList(solution);
+            solveBtnText.text = "Reset";
             solve = false;
         }
         else
         {
-            CamSet.SetActive(true);
-            solveBtn.SetActive(false);
-            solutionText.gameObject.SetActive(false);
-            cube.SetActive(false);
-            solve = true;
+            Automate.moveList = new List<string>();
+            SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex ) ;
         }
     }
 
