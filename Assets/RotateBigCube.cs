@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RotateBigCube : MonoBehaviour
 {
@@ -24,8 +22,6 @@ public class RotateBigCube : MonoBehaviour
     {
         Swipe();
         Drag();
-
-
     }
 
     void Drag()
@@ -47,8 +43,6 @@ public class RotateBigCube : MonoBehaviour
             }
         }
         previousMousePosition = Input.mousePosition;
-
-
     }
 
     void Swipe()

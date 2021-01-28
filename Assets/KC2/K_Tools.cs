@@ -32,7 +32,8 @@ namespace Kociemba
         ///         -6: Parity error: Two corners or two edges have to be exchanged </returns>
         ///
         public static string pathToTablesPrefix = "";
-        public static string pathToTables = @"/StreamingAssets/Tables/";
+
+        public static string pathToTables = @"/Tables/";
 
         public static int verify(string s)
         {
@@ -41,7 +42,7 @@ namespace Kociemba
             {
                 for (int i = 0; i < 54; i++)
                 {
-                    count[(int)CubeColor.Parse(typeof(CubeColor), i.ToString())]++;
+                    count[(int) CubeColor.Parse(typeof(CubeColor), i.ToString())]++;
                 }
             }
             catch (Exception)
@@ -70,13 +71,14 @@ namespace Kociemba
         {
             CubieCube cc = new CubieCube();
             Random gen = new Random();
-            cc.setFlip((short)gen.Next(CoordCube.N_FLIP));
-            cc.setTwist((short)gen.Next(CoordCube.N_TWIST));
+            cc.setFlip((short) gen.Next(CoordCube.N_FLIP));
+            cc.setTwist((short) gen.Next(CoordCube.N_TWIST));
             do
             {
                 cc.setURFtoDLB(gen.Next(CoordCube.N_URFtoDLB));
                 cc.setURtoBR(gen.Next(CoordCube.N_URtoBR));
             } while ((cc.edgeParity() ^ cc.cornerParity()) != 0);
+
             FaceCube fc = cc.toFaceCube();
             return fc.to_fc_String();
         }
@@ -87,16 +89,29 @@ namespace Kociemba
 
         public static void SerializeTable(string filename, short[,] array)
         {
-            //EnsureFolder(Application.streamingAssetsPath + pathToTables);
+            string str = "";
+            byte[] bytes;
+            string path = Path.Combine(Application.streamingAssetsPath + pathToTables, filename);
+            Stream s;
+            
             BinaryFormatter bf = new BinaryFormatter();
-            WWW www = new WWW(Application.streamingAssetsPath + pathToTables + filename);
-            while (!www.isDone)
+            if (path.Contains("://") || path.Contains(":///"))
             {
-                Debug.Log("s0");
+                UnityWebRequest www = UnityWebRequest.Get(path);
+                www.SendWebRequest();
+                while (!www.downloadHandler.isDone)
+                {
+                    Debug.Log("s1");
+                }
+                bytes = www.downloadHandler.data;
+                s = new MemoryStream(bytes);
             }
-
-            byte[] bytes = www.bytes;
-            MemoryStream s = new MemoryStream(bytes);
+            else
+            {
+                EnsureFolder(Application.streamingAssetsPath + pathToTables);
+                s = File.Open(path, FileMode.Open);
+            }
+            
             // Stream s = File.Open(Application.streamingAssetsPath + pathToTables + filename, FileMode.Create);
             bf.Serialize(s, array);
             s.Close();
@@ -106,58 +121,94 @@ namespace Kociemba
         {
             string str = "";
             byte[] bytes;
-            
+            string path = Path.Combine(Application.streamingAssetsPath + pathToTables, filename);
+            Stream s;
+
             Debug.Log(Application.streamingAssetsPath + pathToTables + filename);
-            //EnsureFolder(pathToTablesPrefix + Application.dataPath + pathToTables);
-            // if (Application.platform == RuntimePlatform.Android)
-            // {
-                WWW www = new WWW(Application.streamingAssetsPath + pathToTables + filename);
-                while (!www.isDone)
+
+            if (path.Contains("://") || path.Contains(":///"))
+            {
+                UnityWebRequest www = UnityWebRequest.Get(path);
+                www.SendWebRequest();
+                while (!www.downloadHandler.isDone)
                 {
                     Debug.Log("s1");
                 }
+                bytes = www.downloadHandler.data;
+                s = new MemoryStream(bytes);
+            }
+            else
+            {
+                EnsureFolder(Application.streamingAssetsPath + pathToTables);
+                s = File.Open(path, FileMode.Open);
+            }
+            
 
-                bytes = www.bytes;
-            // }
-            // Stream s = File.Open(pathToTablesPrefix + Application.dataPath + pathToTables + filename, FileMode.Open);
-            MemoryStream s = new MemoryStream(bytes);
             BinaryFormatter bf = new BinaryFormatter();
-            short[,] array = (short[,])bf.Deserialize(s);
+            short[,] array = (short[,]) bf.Deserialize(s);
             s.Close();
             return array;
         }
 
         public static void SerializeSbyteArray(string filename, sbyte[] array)
         {
-            //EnsureFolder(pathToTablesPrefix + Application.dataPath + pathToTables);
+            string str = "";
+            byte[] bytes;
+            string path = Path.Combine(Application.streamingAssetsPath + pathToTables, filename);
+            Stream s;
+            
             BinaryFormatter bf = new BinaryFormatter();
-            WWW www = new WWW(Application.streamingAssetsPath + pathToTables + filename);
-            while (!www.isDone)
+            if (path.Contains("://") || path.Contains(":///"))
             {
-                Debug.Log("s2");
-
+                UnityWebRequest www = UnityWebRequest.Get(path);
+                www.SendWebRequest();
+                while (!www.downloadHandler.isDone)
+                {
+                    Debug.Log("s1");
+                }
+                bytes = www.downloadHandler.data;
+                s = new MemoryStream(bytes);
             }
-            byte[] bytes = www.bytes;
-            MemoryStream s = new MemoryStream(bytes);
-
+            else
+            {
+                EnsureFolder(Application.streamingAssetsPath + pathToTables);
+                s = File.Open(path, FileMode.Open);
+            }
+            
+            // Stream s = File.Open(Application.streamingAssetsPath + pathToTables + filename, FileMode.Create);
             bf.Serialize(s, array);
             s.Close();
         }
 
         public static sbyte[] DeserializeSbyteArray(string filename)
         {
-            //EnsureFolder(pathToTablesPrefix + Application.dataPath + pathToTables);
-            WWW www = new WWW(Application.streamingAssetsPath + pathToTables + filename);
-            while (!www.isDone)
-            {
-                Debug.Log("s3");
+            string str = "";
+            byte[] bytes;
+            string path = Path.Combine(Application.streamingAssetsPath + pathToTables, filename);
+            Stream s;
 
+            Debug.Log(Application.streamingAssetsPath + pathToTables + filename);
+
+            if (path.Contains("://") || path.Contains(":///"))
+            {
+                UnityWebRequest www = UnityWebRequest.Get(path);
+                www.SendWebRequest();
+                while (!www.downloadHandler.isDone)
+                {
+                    Debug.Log("s1");
+                }
+                bytes = www.downloadHandler.data;
+                s = new MemoryStream(bytes);
             }
-            byte[] bytes = www.bytes;
-            MemoryStream s = new MemoryStream(bytes);
+            else
+            {
+                EnsureFolder(Application.streamingAssetsPath + pathToTables);
+                s = File.Open(path, FileMode.Open);
+            }
+            
 
             BinaryFormatter bf = new BinaryFormatter();
-            sbyte[] array = (sbyte[])bf.Deserialize(s);
+            sbyte[] array = (sbyte[]) bf.Deserialize(s);
             s.Close();
             return array;
         }
@@ -176,48 +227,98 @@ namespace Kociemba
             }
         }
 
-        public static String fromScramble(string s) {
+        public static String fromScramble(string s)
+        {
             int[] arr = new int[s.Length];
             int j = 0;
             int axis = -1;
-            for (int i = 0, length = s.Length; i < length; i++) {
-                switch (s[i]) {
-                    case 'U':   axis = 0;   break;
-                    case 'R':   axis = 3;   break;
-                    case 'F':   axis = 6;   break;
-                    case 'D':   axis = 9;   break;
-                    case 'L':   axis = 12;  break;
-                    case 'B':   axis = 15;  break;
+            for (int i = 0, length = s.Length; i < length; i++)
+            {
+                switch (s[i])
+                {
+                    case 'U':
+                        axis = 0;
+                        break;
+                    case 'R':
+                        axis = 3;
+                        break;
+                    case 'F':
+                        axis = 6;
+                        break;
+                    case 'D':
+                        axis = 9;
+                        break;
+                    case 'L':
+                        axis = 12;
+                        break;
+                    case 'B':
+                        axis = 15;
+                        break;
                     case ' ':
-                        if (axis != -1) {
+                        if (axis != -1)
+                        {
                             arr[j++] = axis;
                         }
+
                         axis = -1;
                         break;
-                    case '2':   axis++; break;
-                    case '\'':  axis += 2; break;
-                    default:    continue;
+                    case '2':
+                        axis++;
+                        break;
+                    case '\'':
+                        axis += 2;
+                        break;
+                    default: continue;
                 }
-
             }
+
             if (axis != -1) arr[j++] = axis;
             int[] ret = new int[j];
-            while (--j >= 0) {
+            while (--j >= 0)
+            {
                 ret[j] = arr[j];
             }
+
             return fromScramble(ret);
         }
-        
-        public static string fromScramble(int[] scramble) {
+
+        public static string fromScramble(int[] scramble)
+        {
             CubieCube c1 = new CubieCube();
             CubieCube c2 = new CubieCube();
             CubieCube tmp;
-            for (int i = 0; i < scramble.Length; i++) {
+            for (int i = 0; i < scramble.Length; i++)
+            {
                 c1.cornerMultiply(CubieCube.moveCube[scramble[i]]);
                 c2.cornerMultiply(CubieCube.moveCube[scramble[i]]);
-                tmp = c1; c1 = c2; c2 = tmp;
+                tmp = c1;
+                c1 = c2;
+                c2 = tmp;
             }
+
             return c1.toFaceCube().to_fc_String();
         }
-    }    
+
+        //
+        // IEnumerator GetRequest(string uri)
+        // {
+        //     using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        //     {
+        //         // Request and wait for the desired page.
+        //         yield return webRequest.SendWebRequest();
+        //
+        //         string[] pages = uri.Split('/');
+        //         int page = pages.Length - 1;
+        //
+        //         if (webRequest.isNetworkError)
+        //         {
+        //             Debug.Log(pages[page] + ": Error: " + webRequest.error);
+        //         }
+        //         else
+        //         {
+        //             Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+        //         }
+        //     }
+        // }
+    }
 }

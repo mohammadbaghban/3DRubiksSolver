@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using Kociemba;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Solver : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class Solver : MonoBehaviour
     private string solution = "";
     public GameObject solveBtn;
     public GameObject CamSet;
+    public Text solutionText;
+    public bool solve = true;
+    public GameObject cube;
 
     // Start is called before the first frame update
     void Start()
@@ -43,11 +47,26 @@ public class Solver : MonoBehaviour
         Debug.Log(solution);
         CamSet.SetActive(false);
         solveBtn.SetActive(true);
+        solutionText.gameObject.SetActive(true);
+        cube.SetActive(true);
+        solutionText.text = solution;
     }
 
     public void SolveButtonClicked()
     {
-        Automate.moveList = StringToList(solution);
+        if (solve)
+        {
+            Automate.moveList = StringToList(solution);
+            solve = false;
+        }
+        else
+        {
+            CamSet.SetActive(true);
+            solveBtn.SetActive(false);
+            solutionText.gameObject.SetActive(false);
+            cube.SetActive(false);
+            solve = true;
+        }
     }
 
     public static string CellsToCube54(Cell[] cells)

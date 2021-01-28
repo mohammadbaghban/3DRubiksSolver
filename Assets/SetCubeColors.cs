@@ -8,9 +8,6 @@ public class SetCubeColors : MonoBehaviour
     public Color[] colors = new Color[6];
     public Dictionary<char, int> kociembaFaceToIndex = new Dictionary<char, int>();
 
-    public GameObject Cube;
-    //public Cell[] cells;
-    
     public List<GameObject> front;
     public List<GameObject> right;
     public List<GameObject> back;
@@ -29,7 +26,6 @@ public class SetCubeColors : MonoBehaviour
 
     public void SetColors(Color[] colors, string kociembaCube54)
     {
-        Cube.SetActive(true);
 
         for (int i = 0; i < 54; i++)
         {
