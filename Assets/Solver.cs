@@ -18,6 +18,7 @@ public class Solver : MonoBehaviour
     public Text solutionText;
     public bool solve = true;
     public GameObject cube;
+    public GameObject guideCube;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,7 @@ public class Solver : MonoBehaviour
         solveBtn.SetActive(true);
         solutionText.gameObject.SetActive(true);
         cube.SetActive(true);
+        guideCube.SetActive(false);
         solutionText.text = solution;
 
         if (solution.Contains("Error"))

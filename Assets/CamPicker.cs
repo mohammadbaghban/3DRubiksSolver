@@ -13,6 +13,8 @@ public class CamPicker : MonoBehaviour
 public RawImage image;
      public RectTransform imageParent;
      public AspectRatioFitter imageFitter;
+     public int capturedPhotoIndex = 0;
+     public GameObject GuideCube;
  
      // Device cameras
      WebCamDevice frontCameraDevice;
@@ -40,7 +42,7 @@ public RawImage image;
      private int realCellSpaceFromBorder = 75;
      private int cellSpaceFromBorder;
      private int gridImageSize = 900;
-     
+
      void Start()
      {
          // Check for device cameras
@@ -145,8 +147,52 @@ public RawImage image;
              }
          }
 
-         ColorDetector.AddFaceColor(colors);
+         capturedPhotoIndex++;
+
+         Vector3 guideCubeRotation = GuideCube.transform.rotation.eulerAngles;
          
+         switch (capturedPhotoIndex)
+         {
+             case 1: 
+             case 2:
+             case 3:
+                 guideCubeRotation += new Vector3(0, 90, 0);
+                 break;
+             case 4:
+                 guideCubeRotation += new Vector3(0, 0, 90);
+                 break;
+             case 5:
+                 guideCubeRotation += new Vector3(0, 0, 180);
+                 capturedPhotoIndex = 0;
+                 break;
+         } 
+         Quaternion rotation = Quaternion.Euler(guideCubeRotation);
+         StartCoroutine(rotateObject(GuideCube, rotation, 1f));
+         ColorDetector.AddFaceColor(colors);
+
+     }
+     
+     bool rotating = false;
+     IEnumerator rotateObject(GameObject gameObjectToMove, Quaternion newRot, float duration)
+     {
+         if (rotating)
+         {
+             yield break;
+         }
+         rotating = true;
+
+         Quaternion currentRot = gameObjectToMove.transform.rotation;
+
+         float counter = 0;
+         while (counter < duration)
+         {
+             counter += Time.deltaTime;
+             gameObjectToMove.transform.rotation = Quaternion.Lerp(currentRot, newRot, counter / duration);
+             yield return null;
+         }
+
+         gameObjectToMove.transform.rotation = newRot;
+         rotating = false;
      }
      
      Texture2D RotateTexture(WebCamTexture originalTexture, bool clockwise)
@@ -192,8 +238,6 @@ public RawImage image;
              return;
          }
          
-         Debug.Log("Rotation: " + activeCameraTexture.videoRotationAngle);
- 
          // Rotate image to show correct orientation 
          rotationVector.z = -activeCameraTexture.videoRotationAngle;
          image.rectTransform.localEulerAngles = rotationVector;
@@ -210,5 +254,13 @@ public RawImage image;
          // Mirror front-facing camera's image horizontally to look more natural
          imageParent.localScale = 
              activeCameraDevice.isFrontFacing ? fixedScale : defaultScale;
+         
+         
+         // GuideCube.transform.rotation = Quaternion.Lerp(guideCubeRotation, guideCubeNewRotation, 10f * Time.deltaTime);
+         // if (Quaternion.Angle(guideCubeRotation, guideCubeNewRotation) <= 1)
+         // {
+         //     GuideCube.transform.rotation = guideCubeNewRotation;
+         // }
+
      }
 }
