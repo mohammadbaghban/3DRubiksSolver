@@ -53,7 +53,7 @@ public RawImage image;
          // Get the device's cameras and create WebCamTextures with them
          frontCameraDevice = WebCamTexture.devices.Last();
          backCameraDevice = WebCamTexture.devices[0];
- 
+
          frontCameraTexture = new WebCamTexture(frontCameraDevice.name);
          backCameraTexture = new WebCamTexture(backCameraDevice.name);
  
@@ -72,7 +72,7 @@ public RawImage image;
          {
              activeCameraTexture.Stop();
          }
-             
+         
          activeCameraTexture = cameraToUse;
          activeCameraDevice = WebCamTexture.devices.FirstOrDefault(device => 
              device.name == cameraToUse.deviceName);
@@ -85,7 +85,7 @@ public RawImage image;
 
      public void CapturePhoto()
      {
-         StartCoroutine("TakePhoto");
+         StartCoroutine(nameof(TakePhoto));
      }
      
      IEnumerator TakePhoto()  // Start this Coroutine on some button click
@@ -103,7 +103,16 @@ public RawImage image;
          photo.SetPixels(activeCameraTexture.GetPixels());
          photo.Apply();
 
-         squareImageSize = Math.Min(activeCameraTexture.width, activeCameraTexture.height);
+         Texture2D camTexture = new Texture2D(activeCameraTexture.width, activeCameraTexture.height);
+         camTexture.SetPixels(activeCameraTexture.GetPixels());
+         camTexture.Apply();
+
+         if (activeCameraTexture.videoRotationAngle == 90)
+         {
+             camTexture = RotateTexture(activeCameraTexture, true);
+         }
+
+         squareImageSize = Math.Min(camTexture.width, camTexture.height);
          Debug.Log("Image size: " + squareImageSize);
          
          //Encode to a PNG
@@ -115,8 +124,8 @@ public RawImage image;
          int smallPhotoSize = (int) (gridCellSize * gridToPhotoScale);
          cellSpaceFromBorder = (int) (realCellSpaceFromBorder * gridToPhotoScale);
          Debug.Log("SPS: " + smallPhotoSize);
-         int firstXPosition = (int) (activeCameraTexture.width / 2f - squareImageSize / 2f + cellSpaceFromBorder);
-         int firstYPosition = (int) (activeCameraTexture.height / 2f - squareImageSize / 2f + cellSpaceFromBorder);
+         int firstXPosition = (int) (camTexture.width / 2f - squareImageSize / 2f + cellSpaceFromBorder);
+         int firstYPosition = (int) (camTexture.height / 2f - squareImageSize / 2f + cellSpaceFromBorder);
 
          Debug.Log("GCS: " + gridCellSize * gridToPhotoScale);
          Debug.Log("x: " + firstXPosition);
@@ -131,13 +140,38 @@ public RawImage image;
              {
                  int xPosition = firstXPosition + j * ((int) (gridCellSize * gridToPhotoScale) + (cellSpaceFromBorder * 2));
                  int yPosition = firstYPosition + i * ((int) (gridCellSize * gridToPhotoScale) + (cellSpaceFromBorder * 2));
-                 colors[3 * i + j] = activeCameraTexture.GetPixels(xPosition, yPosition, smallPhotoSize, smallPhotoSize);
+                 colors[3 * i + j] = camTexture.GetPixels(xPosition, yPosition, smallPhotoSize, smallPhotoSize);
                  
              }
          }
 
          ColorDetector.AddFaceColor(colors);
          
+     }
+     
+     Texture2D RotateTexture(WebCamTexture originalTexture, bool clockwise)
+     {
+         Color32[] original = originalTexture.GetPixels32();
+         Color32[] rotated = new Color32[original.Length];
+         int w = originalTexture.width;
+         int h = originalTexture.height;
+ 
+         int iRotated, iOriginal;
+ 
+         for (int j = 0; j < h; ++j)
+         {
+             for (int i = 0; i < w; ++i)
+             {
+                 iRotated = (i + 1) * h - j - 1;
+                 iOriginal = clockwise ? original.Length - 1 - (j * w + i) : j * w + i;
+                 rotated[iRotated] = original[iOriginal];
+             }
+         }
+ 
+         Texture2D rotatedTexture = new Texture2D(h, w);
+         rotatedTexture.SetPixels32(rotated);
+         rotatedTexture.Apply();
+         return rotatedTexture;
      }
      
      // Switch between the device's front and back camera
@@ -157,6 +191,8 @@ public RawImage image;
              Debug.Log("Still waiting another frame for correct info...");
              return;
          }
+         
+         Debug.Log("Rotation: " + activeCameraTexture.videoRotationAngle);
  
          // Rotate image to show correct orientation 
          rotationVector.z = -activeCameraTexture.videoRotationAngle;
