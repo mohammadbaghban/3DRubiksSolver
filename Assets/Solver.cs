@@ -51,7 +51,6 @@ public class Solver : MonoBehaviour
         Debug.Log(cube54);
         string info = "";
 
-        loadingPanel.SetActive(true);
         solution = Search.solution(Cube54ToKociemba(cube54), out info);
         loadingPanel.SetActive(false);
 

@@ -27,7 +27,6 @@ namespace DefaultNamespace
             for (int i = 0; i < 6; i++)
             {
                 centersAverage[i] = AverageColor(centers[i]);
-                Debug.Log("CA:: " + centersAverage[i].r * 255 + " " +  centersAverage[i].g * 255 + " " + centersAverage[i].b * 255);
             }
             
             string cube54 = "";
@@ -35,8 +34,6 @@ namespace DefaultNamespace
             {
                 for (int j = 0; j < 9; j++)
                 {
-                    // _cells[i * 9 + j] = new Cell(i, j);
-                    // ClassifyColor(AverageColor(_colors[i][j]), i * 9 + j);
                     for (int k = 0; k < 6; k++)
                     {
                         differences[i * 54 + j * 6 + k] = new ColorItem(i, j, k, ColorDifference(k, AverageColor(_colors[i][j])));
@@ -44,11 +41,6 @@ namespace DefaultNamespace
                 }
             }
 
-            for (int i = 0; i < 324; i++)
-            {
-                Debug.Log("differences " + differences[i].assignedFaceIndex + " " + differences[i].colorDifference);
-
-            }
             
             for (int i = 0; i < 6; i++)
             {
@@ -58,12 +50,8 @@ namespace DefaultNamespace
                 }
             }
             ClassifyColors();
-            // GameObject.Find("Solver").GetComponent<Solver>().SetFacelets();
-            Debug.Log("Before SetColors");
             GameObject.Find("SetCubeColors").GetComponent<SetCubeColors>().SetColors(centersAverage, Solver.Cube54ToKociemba(Solver.CellsToCube54(_cells)));
-            Debug.Log("After SetColors");
             GameObject.Find("Solver").GetComponent<Solver>().Solve(_cells);
-            Debug.Log("After Solve");
         }
 
         static double ColorDifference(int faceIndex, Color color)
@@ -90,7 +78,6 @@ namespace DefaultNamespace
                     numberOfValidPixels++;
                 }
             }
-            Debug.Log("AVG: " + 255 * r / numberOfValidPixels + " " + 255 * g / numberOfValidPixels + " " + 255 * b / numberOfValidPixels);
             return new Color(r / numberOfValidPixels, g / numberOfValidPixels, b / numberOfValidPixels);
         }
 
@@ -149,11 +136,6 @@ namespace DefaultNamespace
                 ColorDetection();
                 _faceIndex = 0;
                 assignedCellsToEachFace = new[] {0, 0, 0, 0, 0, 0};
-                // ThreadStart thread = delegate
-                // {
-                //     
-                // };
-                // thread.Invoke();
             }
         }
 
