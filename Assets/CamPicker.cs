@@ -87,7 +87,6 @@ public class CamPicker : MonoBehaviour
 
     public void CapturePhoto()
     {
-        capturedPhotoIndex++;
         StartCoroutine(nameof(TakePhoto));
     }
 
@@ -138,6 +137,7 @@ public class CamPicker : MonoBehaviour
 
 
         Vector3 guideCubeRotation = GuideCube.transform.rotation.eulerAngles;
+        capturedPhotoIndex++;
 
         switch (capturedPhotoIndex)
         {
@@ -151,6 +151,7 @@ public class CamPicker : MonoBehaviour
                 break;
             case 5:
                 guideCubeRotation += new Vector3(0, 0, -180);
+                capturedPhotoIndex = 0;
                 break;
         }
         Quaternion rotation = Quaternion.Euler(guideCubeRotation);
