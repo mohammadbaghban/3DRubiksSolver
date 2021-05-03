@@ -16,6 +16,7 @@ public class CamPicker : MonoBehaviour
     public int capturedPhotoIndex = 0;
     public GameObject GuideCube;
     public GameObject loadingPanel;
+    public List<GameObject> guideCubeAllCells;
 
     // Device cameras
     WebCamDevice frontCameraDevice;
@@ -137,27 +138,43 @@ public class CamPicker : MonoBehaviour
 
 
         Vector3 guideCubeRotation = GuideCube.transform.rotation.eulerAngles;
-        capturedPhotoIndex++;
 
         switch (capturedPhotoIndex)
         {
+            case 0:
             case 1:
             case 2:
-            case 3:
                 guideCubeRotation += new Vector3(0, 90, 0);
                 break;
+            case 3:
+                guideCubeRotation += new Vector3(90, 0, 0);
+                break;
             case 4:
-                guideCubeRotation += new Vector3(0, 0, 90);
+                guideCubeRotation += new Vector3(-180, 0, 0);
                 break;
-            case 5:
-                guideCubeRotation += new Vector3(0, 0, -180);
-                capturedPhotoIndex = 0;
-                break;
+
         }
         Quaternion rotation = Quaternion.Euler(guideCubeRotation);
         StartCoroutine(rotateObject(GuideCube, rotation, 1f));
-        ColorDetector.AddFaceColor(colors);
+        SetGuideCubeFaceColor(capturedPhotoIndex, colors);
+        if (capturedPhotoIndex < 5)
+        {
+            StartCoroutine(ExecuteAfterTime(0, colors));
+        }
+        else
+        {
+            loadingPanel.SetActive(true);
+            StartCoroutine(ExecuteAfterTime(0.2f, colors));
+        }
+        capturedPhotoIndex++;
 
+    }
+
+    IEnumerator ExecuteAfterTime(float time, Color[][] colors)
+    {
+        yield return new WaitForSeconds(time);
+
+        ColorDetector.AddFaceColor(colors);
     }
 
     bool rotating = false;
@@ -249,5 +266,18 @@ public class CamPicker : MonoBehaviour
         //     GuideCube.transform.rotation = guideCubeNewRotation;
         // }
 
+    }
+
+    public void SetGuideCubeFaceColor(int face, Color[][] colors)
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            SetGuideCubeTileColor(face, i, ColorDetector.AverageColor(colors[i]));
+        }
+    }
+
+    public void SetGuideCubeTileColor(int face, int tileNumber, Color color)
+    {
+        guideCubeAllCells[face * 9 + tileNumber].GetComponent<Renderer>().material.color = color;
     }
 }

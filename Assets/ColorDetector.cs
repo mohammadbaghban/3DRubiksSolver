@@ -61,7 +61,7 @@ namespace DefaultNamespace
                     Math.Pow(color.b - centersAverage[faceIndex].b, 2);
         }
         
-        static Color AverageColor(Color[] colors)
+        public static Color AverageColor(Color[] colors)
         {
             int numberOfValidPixels = 0;
             float r = 0, g = 0, b = 0;

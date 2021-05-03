@@ -63,6 +63,8 @@ public class SetCubeColors : MonoBehaviour
         }
     }
 
+  
+
     // public void SetCells(Cell[] cells)
     // {
     //     this.cells = cells;
