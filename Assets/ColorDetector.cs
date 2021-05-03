@@ -134,9 +134,14 @@ namespace DefaultNamespace
             if (_faceIndex == 6)
             {
                 ColorDetection();
-                _faceIndex = 0;
-                assignedCellsToEachFace = new[] {0, 0, 0, 0, 0, 0};
+                Reset();
             }
+        }
+
+        public static void Reset()
+        {
+            _faceIndex = 0;
+            assignedCellsToEachFace = new[] { 0, 0, 0, 0, 0, 0 };
         }
 
         public static Color[] GetCenterColors()

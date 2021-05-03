@@ -23,9 +23,9 @@ public class Solver : MonoBehaviour
     public GameObject pauseBtn;
     public GameObject nextBtn;
     public GameObject resetBtn;
-    public List<String> remainingMoves;
+    public List<String> remainingMoves = new List<string>();
     public Slider speedSlider;
-    public float rotationMidSpeed = 300f;
+    public const float rotationSpeed = 300f;
     public GameObject loadingPanel;
 
     // Start is called before the first frame update
@@ -97,8 +97,26 @@ public class Solver : MonoBehaviour
 
     public void ResetBtnClicked()
     {
-        Automate.moveList = new List<string>();
+        ResetObjects();
+        StartCoroutine(ExecuteAfterTime(0.5f));
+    }
+
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    }
+
+    public void ResetObjects()
+    {
+        ColorDetector.Reset();
+        Automate.moveList = new List<string>();
+        solution = "";
+        remainingMoves = new List<string>();
+        facelets = "";
+        PivotRotation.speed = 300f;
     }
 
     public void NextBtnClicked()
@@ -112,7 +130,7 @@ public class Solver : MonoBehaviour
 
     public void SpeedSliderChanged()
     {
-        PivotRotation.speed = (speedSlider.value + 0.1f) * rotationMidSpeed;
+        PivotRotation.speed = (speedSlider.value + 0.1f) * rotationSpeed;
     }
 
     public static string CellsToCube54(Cell[] cells)
@@ -197,6 +215,11 @@ public class Solver : MonoBehaviour
         faceletCube += cube54[20];
 
         return faceletCube;
+    }
+
+    private void OnDestroy()
+    {
+        ResetObjects();
     }
 
     private void Update()

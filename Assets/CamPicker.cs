@@ -159,14 +159,15 @@ public class CamPicker : MonoBehaviour
         SetGuideCubeFaceColor(capturedPhotoIndex, colors);
         if (capturedPhotoIndex < 5)
         {
+            capturedPhotoIndex++;
             StartCoroutine(ExecuteAfterTime(0, colors));
         }
         else
         {
             loadingPanel.SetActive(true);
-            StartCoroutine(ExecuteAfterTime(0.2f, colors));
+            capturedPhotoIndex = 0;
+            StartCoroutine(ExecuteAfterTime(0.3f, colors));
         }
-        capturedPhotoIndex++;
 
     }
 

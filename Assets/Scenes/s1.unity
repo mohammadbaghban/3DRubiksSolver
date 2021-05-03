@@ -2217,7 +2217,7 @@ RectTransform:
   m_GameObject: {fileID: 309890518}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1032549604}
   m_Father: {fileID: 1918957565}
@@ -2225,8 +2225,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00012207031}
-  m_SizeDelta: {x: 533.3335, y: 888.88794}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &319905444 stripped
 Transform:
@@ -15067,7 +15067,6 @@ MonoBehaviour:
   resetBtn: {fileID: 2113899498}
   remainingMoves: []
   speedSlider: {fileID: 1215393449}
-  rotationMidSpeed: 300
   loadingPanel: {fileID: 309890518}
 --- !u!4 &2124714531
 Transform:
