@@ -162,7 +162,7 @@ public RawImage image;
                  guideCubeRotation += new Vector3(0, 0, 90);
                  break;
              case 5:
-                 guideCubeRotation += new Vector3(0, 0, 180);
+                 guideCubeRotation += new Vector3(0, 0, -180);
                  capturedPhotoIndex = 0;
                  break;
          } 
